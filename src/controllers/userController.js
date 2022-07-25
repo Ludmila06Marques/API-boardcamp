@@ -50,7 +50,7 @@ export async function createUser(req,res){
     const user= req.body
 
     try {
-        const result= await db.query(`SELECT name FROM customers  WHERE cpf=$1` , [user.cpf])
+        const result= await db.query(`SELECT name-m FROM customers  WHERE cpf=$1` , [user.cpf])
 
         if(result.rowCount>0){
             return res.sendStatus(409)
