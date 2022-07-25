@@ -4,7 +4,8 @@ export function validateGame(req, res, next) {
   const game = req.body;
   const validation = gameSchema.validate(game);
   if (validation.error) {
-    return res.sendStatus(400); // bad request
+    console.log(validation.error)
+    return res.status(400).send("deu n"); 
   }
 
   next();
