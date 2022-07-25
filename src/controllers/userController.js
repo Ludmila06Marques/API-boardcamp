@@ -27,22 +27,22 @@ export async function getUsers(req,res){
 }
 
 export async function getUser(req,res){
-    const { id } = req.params;
+    const { id } = req.params
 
     if (isNaN(parseInt(id))) {
       return res.sendStatus(400)
     }
   
     try {
-      const result = await db.query(`SELECT * FROM customers WHERE id = $1`, [id]);
+      const result = await db.query(`SELECT * FROM customers WHERE id = $1`, [id])
       if (result.rowCount === 0) {
         return res.sendStatus(404)
       }
   
-      res.send(result.rows[0]);
+      res.send(result.rows[0])
     } catch (error) {
-      console.log(error);
-      res.sendStatus(500);
+      console.log(error)
+      res.sendStatus(500)
     }
 }
 
@@ -58,8 +58,8 @@ export async function createUser(req,res){
         
             await db.query(`
             INSERT INTO customers (name, phone, cpf, birthday) 
-            VALUES ($1, $2, $3, $4);
-        `, [user.name, user.phone, user.cpf, user.birthday]);
+            VALUES ($1, $2, $3, $4)
+        `, [user.name, user.phone, user.cpf, user.birthday])
 
         res.sendStatus(201)
 
@@ -81,9 +81,9 @@ export async function updateUser(req, res){
 
         const result = await db.query(`
         SELECT id FROM customers WHERE cpf = $1 AND id != $2
-      `, [customer.cpf, id]);
+      `, [customer.cpf, id])
       if (result.rowCount > 0) {
-        return res.sendStatus(409); // conflict
+        return res.sendStatus(409) // conflict
       }
         
       await db.query(`
@@ -94,7 +94,7 @@ export async function updateUser(req, res){
         cpf = $3, 
         birthday = $4 
       WHERE id = $5
-    `, [customer.name, customer.phone, customer.cpf, customer.birthday, id]);
+    `, [customer.name, customer.phone, customer.cpf, customer.birthday, id])
 
     res.sendStatus(200)
       } catch (error) {

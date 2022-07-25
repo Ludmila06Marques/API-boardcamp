@@ -1,12 +1,12 @@
-import { Router } from "express";
-import { getCategories , createCategory } from "../controllers/categoryController.js";
-import { validateCategory } from "../middlewares/validateCategory.js";
+import { Router } from "express"
+import { getCategories , createCategory } from "../controllers/categoryController.js"
+import { validateCategory } from "../middlewares/validateCategory.js"
 
 
 
-const categoryRouter = Router();
+const categoryRouter = Router()
 
-categoryRouter.get("/categories", getCategories);
-categoryRouter.post("/categories", validateCategory, createCategory);
+categoryRouter.get("/categories", getCategories)
+categoryRouter.post("/categories", validateCategory, createCategory)
 
-export default categoryRouter;
+export default categoryRouter

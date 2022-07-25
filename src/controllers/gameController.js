@@ -40,10 +40,10 @@ export async function createGame(req,res){
 
         await db.query(`
         INSERT INTO games(name, image, "stockTotal", "categoryId", "pricePerDay")
-        VALUES ($1, $2, $3, $4, $5);
-      `, [game.name, game.image, Number(game.stockTotal), game.categoryId, Number(game.pricePerDay)]);
+        VALUES ($1, $2, $3, $4, $5)
+      `, [game.name, game.image, Number(game.stockTotal), game.categoryId, Number(game.pricePerDay)])
   
-      res.sendStatus(201);
+      res.sendStatus(201)
         
     } catch (error) {
         console.log(error)

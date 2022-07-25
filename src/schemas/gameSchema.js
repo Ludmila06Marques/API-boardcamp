@@ -1,4 +1,4 @@
-import joi from "joi";
+import joi from "joi"
 
 const gameSchema = joi.object({
   name: joi.string().required(),
@@ -6,6 +6,6 @@ const gameSchema = joi.object({
   stockTotal: joi.string().required(),
   categoryId: joi.number().required(),
   pricePerDay: joi.string().required()
-});
+})
 
-export default gameSchema;
+export default gameSchema
